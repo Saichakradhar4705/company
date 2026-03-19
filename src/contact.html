@@ -15,50 +15,49 @@
     <!-- ===== HEADER ===== -->
     <header class="solid" id="site-header">
         <a href="index.html" class="logo">
-            <img src="assets/company logo.png" alt="Company Logo" class="logo-img" />
+            <img src="assets/quadraid_logo.png" alt="Company Logo" class="logo-img" />
             <span class="logo-name">Quadraid Industries</span>
         </a>
-        <a href="index.html" class="nav-btn">Back to Home</a>
+        <nav style="display:flex; gap:12px; align-items:center;">
+            <a href="about.html" class="nav-btn">About</a>
+            <a href="index.html" class="nav-btn" style="background:var(--gold); color:var(--dark);">Home</a>
+        </nav>
     </header>
 
     <!-- ===== CONTACT PAGE CONTENT ===== -->
     <div class="page-container">
         <div class="form-wrapper">
-            <h1 class="page-title centered reveal">Contact Us</h1>
+            <h1 class="page-title centered reveal">Connect With Us</h1>
+            <p class="form-intro-text reveal delay-1" style="text-align:center; max-width:580px; margin: 0 auto 2.5rem;">
+                Organizations and institutions looking for advanced purification solutions can reach out to discuss
+                system requirements, project scope, and deployment opportunities.
+            </p>
 
             <form class="form-box reveal delay-2" id="contact-form" novalidate>
 
-                <!-- Full Name -->
+                <!-- Name -->
                 <div class="input-group">
                     <label class="form-label" for="name">Full Name</label>
-                    <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required />
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required />
                 </div>
 
-                <!-- Email + Phone row -->
+                <!-- Organization + Project Type row -->
                 <div class="input-row">
                     <div class="input-group">
-                        <label class="form-label" for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="john@company.com"
-                            required />
+                        <label class="form-label" for="organization">Organization</label>
+                        <input type="text" id="organization" name="organization" class="form-input" placeholder="Company / Institution name" />
                     </div>
                     <div class="input-group">
-                        <label class="form-label" for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+1 234 567 8900"
-                            required />
+                        <label class="form-label" for="project-type">Project Type</label>
+                        <input type="text" id="project-type" name="project-type" class="form-input" placeholder="e.g. Residential, Industrial" />
                     </div>
-                </div>
-
-                <!-- Company -->
-                <div class="input-group">
-                    <label class="form-label" for="company">Company / Organization</label>
-                    <input type="text" id="company" name="company" class="form-input" placeholder="Your Company Name" />
                 </div>
 
                 <!-- Message -->
                 <div class="input-group">
-                    <label class="form-label" for="message">Message / Specific Requirements</label>
+                    <label class="form-label" for="message">Message</label>
                     <textarea id="message" name="message" class="form-textarea"
-                        placeholder="Tell us about your requirements..."></textarea>
+                        placeholder="Describe your project requirements, system scope, and any specific needs..."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submit-btn">
@@ -86,8 +85,8 @@
     <!-- ===== FOOTER ===== -->
     <footer>
         <div class="footer-col">
-            <h3 class="footer-title">QUADRAID INDUSTRIES</h3>
-            <p class="footer-text">Pioneering the future of clean water with advanced molecular filtration solutions.
+            <h3 class="footer-title">Quadraid Industries</h3>
+            <p class="footer-text">Developing advanced purification technologies for residential, institutional, and industrial environments.
             </p>
         </div>
         <div class="footer-col">
@@ -129,7 +128,7 @@
             </div>
         </div>
         <div class="copyright">
-            &copy; <span id="contact-year"></span> QUADRAID INDUSTRIES. All rights reserved.
+            &copy; <span id="contact-year"></span> Quadraid Industries. All rights reserved.
         </div>
     </footer>
 
@@ -164,23 +163,17 @@
             e.preventDefault();
 
             const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+            const org = document.getElementById('organization').value.trim();
 
-            if (!name || !email || !phone) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
+            if (!name) {
+                alert('Please enter your full name.');
                 return;
             }
 
             console.log('Form Submitted:', {
-                name, phone, email,
-                company: document.getElementById('company').value,
+                name,
+                organization: org,
+                projectType: document.getElementById('project-type').value,
                 message: document.getElementById('message').value
             });
 
